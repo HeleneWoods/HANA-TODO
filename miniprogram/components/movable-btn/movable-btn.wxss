@@ -1,0 +1,38 @@
+
+movable-area {
+  position: fixed;
+  right: 0;
+  width: 100vw;
+  z-index: 10;
+}
+
+movable-view {
+  pointer-events: auto;
+}
+movable-area {
+  pointer-events: none;
+}
+
+.add-btn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 55px;
+  height: 55px;
+  background-color: #fff;
+  border-radius: 16px;
+  box-shadow: 3px 5px 10px #d0d0d0;
+  border: 1px solid #d0d0d08f;
+  z-index: 11;
+}
+
+.add-btn-active {
+  border: 1px solid #3cc51f;
+  box-shadow: 3px 5px 10px #3bc51f2a;
+}
+
+.add-btn image {
+  height: 25px;
+  width: 25px;
+  z-index: 12;
+}

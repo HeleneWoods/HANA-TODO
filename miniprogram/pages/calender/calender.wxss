@@ -1,0 +1,30 @@
+/* pages/calender/calender.wxss */
+.calendar {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  margin: 0 5px;
+  box-sizing: border-box;
+  border-left: 1px solid #ccc;
+  border-bottom: 1px solid #ccc;
+}
+
+.day {
+  width: calc(14.28%);
+  background-color: transparent; /* Set background to transparent */
+  padding: 5px;
+  border-width: 1px;
+  box-sizing: border-box; /* Include padding and border in element's total width and height */
+  text-align: center;
+}
+
+.day {
+  border-top: 1px solid #ccc;
+  border-right: 1px solid #ccc;
+}
+
+.task {
+  font-size: 12px;
+  color: #333;
+  margin-top: 5px;
+}

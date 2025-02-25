@@ -1,0 +1,19 @@
+# 项目简介
+- 这是一个日常TODO管理的微信小程序
+
+# 项目技术栈
+- typescript
+
+# 项目结构
+- miniprogram/
+  - assets/
+  - components/
+  - custom-tab-bar/
+  - pages/
+  - utils/
+  - app.ts
+  - app.json
+  - app.wxss
+  - sitemap.json
+- typings/
+

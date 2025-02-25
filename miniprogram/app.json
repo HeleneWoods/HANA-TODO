@@ -1,0 +1,48 @@
+{
+  "pages": [
+    "pages/todotoday/todotoday",
+    "pages/calender/calender",
+    "pages/progress/progress",
+    "pages/mine/mine",
+    "pages/editPanel/editPanel"
+  ],
+  "window": {
+    "navigationBarTextStyle": "black",
+    "navigationStyle": "custom"
+  },
+  "tabBar": {
+    "custom": true,
+    "list": [
+      {
+        "pagePath": "pages/todotoday/todotoday",
+        "iconPath": "assets/pictures/todoList.png",
+        "selectedIconPath": "assets/pictures/todoList-selected.png",
+        "text": "今日计划"
+      },
+      {
+        "pagePath": "pages/calender/calender",
+        "iconPath": "assets/pictures/calender.png",
+        "selectedIconPath": "assets/pictures/calender-selected.png",
+        "text": "日历"
+      },
+      {
+        "pagePath": "pages/progress/progress",
+        "iconPath": "assets/pictures/progress.png",
+        "selectedIconPath": "assets/pictures/progress-selected.png",
+        "text": "目标"
+      },
+      {
+        "pagePath": "pages/mine/mine",
+        "iconPath": "assets/pictures/mine.png",
+        "selectedIconPath": "assets/pictures/mine-selected.png",
+        "text": "我的"
+      }
+    ]
+  },
+  "style": "v2",
+  "sitemapLocation": "sitemap.json",
+  "lazyCodeLoading": "requiredComponents",
+  "useExtendedLib": {
+    "weui": true
+  }
+}

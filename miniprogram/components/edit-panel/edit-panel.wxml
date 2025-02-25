@@ -1,0 +1,28 @@
+<page-container
+  show="{{show}}"
+  position="right"
+>
+  <view class="edit-form">
+    <form class="form" catchsubmit="handleSave">
+      <view class="form-item-section">
+        <view class="form-item-icon">
+          <image src="/assets/pictures/todoList.png" />
+        </view>
+        <view class="form-item">
+          <input type="text" class="panel-input" auto-focus placeholder="请输入待办事项"/>
+        </view>
+      </view>
+      <view class="form-item-section">
+        <view class="form-item-icon">
+          <image src="/assets/pictures/todoList.png" />
+        </view>
+        <view class="form-item">
+          <input type="text" class="panel-input" auto-focus placeholder="请输入待办事项"/>
+        </view>
+      </view>
+      <view class="form-btn-section">
+        <button bindtap="handleSave" type="primary">保存</button>
+      </view>
+    </form>
+  </view>
+</page-container>

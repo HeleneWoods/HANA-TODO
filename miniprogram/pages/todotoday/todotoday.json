@@ -1,0 +1,6 @@
+{
+  "usingComponents": {
+    "navigation-bar": "/components/navigation-bar/navigation-bar",
+    "movable-btn": "/components/movable-btn/movable-btn"
+  }
+}

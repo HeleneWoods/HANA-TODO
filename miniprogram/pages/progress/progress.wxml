@@ -1,0 +1,4 @@
+<!--pages/progress/progress.wxml-->
+<navigation-bar title="{{programTitle}}" back="{{false}}" color="black" background="#FFF"></navigation-bar>
+
+<text>pages/progress/progress.wxml</text>

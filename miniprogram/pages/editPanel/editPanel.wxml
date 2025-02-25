@@ -1,0 +1,38 @@
+<!--pages/editPanel/editPanel.wxml-->
+<navigation-bar back="{{true}}" color="black" background="#FFF"></navigation-bar>
+
+<view class="edit-form">
+  <form class="form" catchsubmit="handleSave">
+    <view class="form-item-section">
+      <view class="form-item-icon">
+        <image src="/assets/pictures/todoList.png" />
+      </view>
+      <view class="form-item">
+        <input type="text" class="panel-input" auto-focus placeholder="请输入待办事项"/>
+      </view>
+    </view>
+    <view class="form-item-section">
+      <view class="form-item-label">
+        <text>存在上级目标</text>
+      </view>
+      <view class="form-item">
+        <switch type="checkbox" checked="{{isChildAim}}" bindchange="handleTypeChange"/>
+      </view>
+    </view>
+    <view wx:if="{{isChildAim}}" class="form-item-section">
+      <view class="form-item-icon">
+        <image src="/assets/pictures/todoList.png" />
+      </view>
+      <view class="form-item">
+        <picker mode="multiSelector" bindchange="bindMultiPickerChange" bindcolumnchange="bindMultiPickerColumnChange" value="{{multiIndex}}" range="{{multiArray}}">
+          <view class="picker">
+            {{parentAim ? parentAim : '选择上级目标'}}
+          </view>
+        </picker>
+      </view>
+    </view>
+    <view class="form-btn-section">
+      <button bindtap="handleSave" type="primary">保存</button>
+    </view>
+  </form>
+</view>

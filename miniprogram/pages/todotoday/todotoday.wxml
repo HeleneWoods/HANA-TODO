@@ -1,0 +1,32 @@
+<!--pages/todotoday/todotoday.wxml-->
+<navigation-bar id="navigator" title="{{programTitle}}" back="{{false}}" color="black" background="#FFF"></navigation-bar>
+<!-- 日期组件 -->
+<view class="dateComponent">
+  <!-- 前进按钮 -->
+  <block>
+    <button size="mini" class="prev-btn" bind:tap="getPrevDate">
+      <view class="icon icon-back"></view>
+    </button>
+  </block>
+  <!-- 日期显示 -->
+  <view>
+    <text>{{showDate}}</text>
+  </view>
+  <!-- 后退按钮 -->
+  <block>
+    <button size="mini" class="next-btn" bind:tap="getNextDate">
+      <view class="icon icon-next"></view>
+    </button>
+  </block>
+</view>
+<movable-btn movableHeight="{{movableHeight}}" bind:showEditPanel="jumptToEditPanel"></movable-btn>
+<!-- TODO List -->
+<scroll-view scroll-y class="todo-list" style="height: {{todoListHeight}}">
+  <view wx:for="{{todoList}}" wx:key="uid" class="todo-list-item">
+    <view class="index-block"></view>
+    <view class="task-content">
+      <view class="task-title">{{item.context}}</view>
+      <view class="task-parent">{{item.parentAim ? item.parentAim : '其它'}}</view>
+    </view>
+  </view>
+</scroll-view>

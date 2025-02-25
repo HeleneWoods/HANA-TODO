@@ -1,0 +1,13 @@
+<!--pages/calender/calender.wxml-->
+<navigation-bar id="navigator" title="{{programTitle}}" back="{{false}}" color="black" background="#FFF"></navigation-bar>
+
+<scroll-view scroll-y class="todo-list" style="height: {{calendarHeight}}">
+  <view class="calendar">
+    <block wx:for="{{days}}" wx:key="*this">
+      <view class="day" style="height: {{dayBlockHeight}}">
+        <text>{{item}}</text>
+        <view class="task">{{tasks[index]}}</view>
+      </view>
+    </block>
+  </view>
+</scroll-view>

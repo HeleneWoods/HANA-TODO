@@ -1,0 +1,4 @@
+<!--pages/mine/mine.wxml-->
+<navigation-bar title="{{programTitle}}" back="{{false}}" color="black" background="#FFF"></navigation-bar>
+
+<text>pages/mine/mine.wxml</text>

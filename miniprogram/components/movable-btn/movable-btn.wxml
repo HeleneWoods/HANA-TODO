@@ -1,0 +1,5 @@
+<movable-area style="height: {{movableHeight + 'px'}}">
+  <movable-view wx:if="{{y > 0}}" class="add-btn {{btnActive ? 'add-btn-active' : ''}}" x="{{x}}" y="{{y}}" direction="all" animation="{{false}}" bind:tap="clickBtn">
+    <image src="{{btnActive ? editActivePic : editPic}}"/>
+  </movable-view>
+</movable-area>

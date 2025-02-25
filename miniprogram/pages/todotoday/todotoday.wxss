@@ -1,0 +1,41 @@
+/* pages/todotoday/todotoday.wxss */
+@import "../../assets/icon/iconFont.wxss";
+page {
+  height: 100vh;
+}
+
+.dateComponent {
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+  height: 120rpx;
+}
+.prev-arrow {
+  transform: rotate(180deg);
+}
+
+.todo-list-item {
+  display: flex;
+  align-items: center;
+  height: 180rpx;
+  border-bottom: 1px solid grey;
+}
+.index-block {
+  width: 80rpx;
+  height: 80rpx;
+  margin: 0 30rpx;
+  background-color: antiquewhite;
+  border-radius: 50%;
+}
+
+.task-content {
+  padding: 0 20rpx;
+}
+
+.task-title {
+  font-weight: 600;
+}
+
+.task-parent {
+  font-size: 12px;
+}
