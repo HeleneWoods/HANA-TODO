@@ -1,12 +1,43 @@
 <!--pages/calender/calender.wxml-->
 <navigation-bar id="navigator" title="{{programTitle}}" back="{{false}}" color="black" background="#FFF"></navigation-bar>
 
+<!-- 月份组件 -->
+<view class="monthComponent">
+  <!-- 前一个月按钮 -->
+  <block>
+    <button size="mini" class="prev-btn" bind:tap="getPrevMonth">
+      <view class="icon icon-back"></view>
+    </button>
+  </block>
+  <!-- 月份显示 -->
+  <view>
+    <text>{{showMonth}}</text>
+  </view>
+  <!-- 后一个月按钮 -->
+  <block>
+    <button size="mini" class="next-btn" bind:tap="getNextMonth">
+      <view class="icon icon-next"></view>
+    </button>
+  </block>
+</view>
+
+<!-- 星期组件 -->
+<view class="weekComponent">
+  <view class="weekDay">一</view>
+  <view class="weekDay">二</view>
+  <view class="weekDay">三</view>
+  <view class="weekDay">四</view>
+  <view class="weekDay">五</view>
+  <view class="weekDay">六</view>
+  <view class="weekDay">日</view>
+</view>
+
 <scroll-view scroll-y class="todo-list" style="height: {{calendarHeight}}">
   <view class="calendar">
     <block wx:for="{{days}}" wx:key="*this">
-      <view class="day" style="height: {{dayBlockHeight}}">
-        <text>{{item}}</text>
-        <view class="task">{{tasks[index]}}</view>
+      <view class="day" style="height: {{dayBlockHeight}}; background-color: {{item === null ? '#f0f0f0' : 'transparent'}}">
+        <text wx:if="{{item !== null}}">{{item}}</text>
+        <view class="task" wx:if="{{item !== null}}">{{tasks[index]}}</view>
       </view>
     </block>
   </view>

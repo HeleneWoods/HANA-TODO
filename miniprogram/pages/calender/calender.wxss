@@ -1,17 +1,20 @@
 /* pages/calender/calender.wxss */
-.calendar {
+@import "../../assets/icon/iconFont.wxss";
+
+.calendar, .weekComponent {
   display: flex;
   flex-wrap: wrap;
-  justify-content: space-between;
   margin: 0 5px;
   box-sizing: border-box;
+}
+
+.calendar {
   border-left: 1px solid #ccc;
   border-bottom: 1px solid #ccc;
 }
 
-.day {
+.day, .weekDay {
   width: calc(14.28%);
-  background-color: transparent; /* Set background to transparent */
   padding: 5px;
   border-width: 1px;
   box-sizing: border-box; /* Include padding and border in element's total width and height */
@@ -27,4 +30,32 @@
   font-size: 12px;
   color: #333;
   margin-top: 5px;
+}
+
+.monthComponent {
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+  height: 120rpx;
+}
+
+/* .weekComponent {
+  display: flex;
+  justify-content: space-between;
+  height: 60rpx;
+  margin: 0 5px;
+  border-left: 1px solid #ccc;
+  border-right: 1px solid #ccc;
+  border-top: 1px solid #ccc;
+}
+
+.weekDay {
+  width: calc(14.28%);
+  text-align: center;
+  line-height: 60rpx;
+  border-right: 1px solid #ccc;
+} */
+
+.weekDay:last-child {
+  border-right: none; /* Remove the right border for the last day */
 }

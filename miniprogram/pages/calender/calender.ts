@@ -7,30 +7,57 @@ Page({
    */
   data: {
     programTitle: app.globalData.programTitle,
-    days: [],
-    tasks: [],
+    days: [] as (number | null)[], // 使用 null 表示空白方块
+    tasks: [] as string[],
     calendarHeight: '',
-    dayBlockHeight: ''
+    dayBlockHeight: '',
+    currentMonth: new Date(),
+    showMonth: ''
   },
 
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad() {
+    this.setData({
+      currentMonth: new Date()
+    })
+    this.updateMonthDisplay()
     this.generateCalendar()
     this.generateRandomTasks()
   },
 
+  updateMonthDisplay() {
+    const month = this.data.currentMonth.getMonth() + 1
+    const year = this.data.currentMonth.getFullYear()
+    this.setData({
+      showMonth: `${year}年${month}月`
+    })
+  },
+
   generateCalendar() {
-    const daysInMonth = new Date(new Date().getFullYear(), new Date().getMonth() + 1, 0).getDate()
-    const days = Array.from({ length: daysInMonth }, (_, i) => i + 1)
+    const firstDayOfMonth = new Date(this.data.currentMonth.getFullYear(), this.data.currentMonth.getMonth(), 1).getDay()
+    const daysInMonth = new Date(this.data.currentMonth.getFullYear(), this.data.currentMonth.getMonth() + 1, 0).getDate()
+    
+    // Calculate the number of empty days at the start
+    const emptyDaysStart: (number | null)[] = Array.from({ length: firstDayOfMonth === 0 ? 6 : firstDayOfMonth - 1 }, () => null)
+    
+    // Generate the days of the month
+    const monthDays: number[] = Array.from({ length: daysInMonth }, (_, i) => i + 1)
+    
+    // Calculate the number of empty days at the end to fill the last week
+    const totalDays = emptyDaysStart.length + monthDays.length
+    const emptyDaysEnd: (number | null)[] = Array.from({ length: (7 - (totalDays % 7)) % 7 }, () => null)
+    
+    // Concatenate all parts to form the complete days array
+    const days: (number | null)[] = emptyDaysStart.concat(monthDays, emptyDaysEnd)
     this.setData({ days })
   },
 
   generateRandomTasks() {
     const multiArray = [['前端', '英语'], ['js', 'html', 'scss', 'vue'], ['原型', '数据类型', 'this']]
-    const tasks = this.data.days.map(() => {
-      // 随机决定是否显示任务
+    const tasks: string[] = this.data.days.map(day => {
+      if (day === null) return '' // 空白方块不显示任务
       if (Math.random() > 0.7) { // 30% chance to show a task
         const detail = multiArray[2][Math.floor(Math.random() * multiArray[2].length)]
         return detail
@@ -38,6 +65,26 @@ Page({
       return '' // No task for this day
     })
     this.setData({ tasks })
+  },
+
+  getPrevMonth() {
+    const currentMonth = this.data.currentMonth
+    const prevMonth = new Date(currentMonth.getFullYear(), currentMonth.getMonth() - 1, 1)
+    this.setData({ currentMonth: prevMonth }, () => {
+      this.updateMonthDisplay()
+      this.generateCalendar()
+      this.generateRandomTasks()
+    })
+  },
+
+  getNextMonth() {
+    const currentMonth = this.data.currentMonth
+    const nextMonth = new Date(currentMonth.getFullYear(), currentMonth.getMonth() + 1, 1)
+    this.setData({ currentMonth: nextMonth }, () => {
+      this.updateMonthDisplay()
+      this.generateCalendar()
+      this.generateRandomTasks()
+    })
   },
 
   /**
@@ -60,10 +107,12 @@ Page({
     query.select('#navigator').boundingClientRect(function(rect){
       /**
        * rect.height是组件navigator的高度
+       * 40px是时间组件的高度
+       * 20px是星期组件的高度
        * 50px是自定义tab-bar的高度
        * **/
-      const calendarHeight = windowInfo.windowHeight - windowInfo.statusBarHeight - rect.height - 50
-      const dayBlockHeight = calendarHeight / 5
+      const calendarHeight = windowInfo.windowHeight - windowInfo.statusBarHeight - rect.height - 50 - 40 - 20
+      const dayBlockHeight = calendarHeight / 6.5
       
       _this.setData({
         calendarHeight: calendarHeight + 'px',
